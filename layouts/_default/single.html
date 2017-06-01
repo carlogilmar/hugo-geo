@@ -2,9 +2,20 @@
 {{ partial "nav.html" . }}
 
 <main>
-	<header>
-		<h1>{{ .Title }}</h1>
-	</header>
+
+  <header>
+    <h1 align=center>{{ .Title }}</h1>
+    {{ if isset .Params "author" }}
+    <section class="author">
+      <p align=center> <b>Redactado por: {{ index .Params "author" }}</b></p>
+    </section>
+    {{ else if isset .Site.Params "author" }}
+    <section class="author">
+      <p align=center><b>Redactado por: {{ index .Site.Params "author" }}</b></p>
+    </section>
+    {{ end }}
+  </header>
+  </br>
 
 	<article>
 		{{ .Content }}
